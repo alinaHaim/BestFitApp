@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:paddingLeft="16dp"
               android:paddingRight="16dp"
               android:paddingTop="16dp"
-              android:paddingBottom="16dp" tools:context=".Main3Activity"
+              android:paddingBottom="16dp" tools:context=".MainActivity"
               android:orientation="vertical"
     >
 
+
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="352dp"
+        android:layout_height="95dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -33,14 +36,46 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/Cum_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cum"/>
+        android:id="@+id/choose_circle_button"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="51dp"
+        android:background="@drawable/choose_circle_button"
+        android:text="Choose an outfit"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+
+        tools:ignore="DuplicateIds"/>
+
+
 
     <Button
-        android:id="@+id/Library_button"
+        android:id="@+id/test_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Library"/>
+        android:text="Test"/>
+
+    <LinearLayout
+        android:layout_width="355dp"
+        android:layout_height="113dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_about"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="About"/>
+
+        <Button
+            android:id="@+id/button_closet"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="My Closet"/>
+    </LinearLayout>
+
 </LinearLayout>

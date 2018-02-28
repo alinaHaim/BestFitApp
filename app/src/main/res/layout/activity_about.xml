@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app1.bestfitapp.AboutActivity">
+
+    <LinearLayout
+        android:layout_width="353dp"
+        android:layout_height="494dp"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="14dp">
+
+        <TextView
+            android:id="@+id/About_Text"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:text="what to wear? and how to wear? daily question that we ask ourself every morning.
+BestFit application comes to answer that question.
+This app matches clothes for the user from his private closet.
+
+Developers: Inbal Hermann &amp; Alina Ben Shushan."
+            android:textSize="25dp"
+            tools:layout_editor_absoluteX="61dp"
+            tools:layout_editor_absoluteY="27dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="314dp">
+
+
+            <ImageView
+                android:id="@+id/alina_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/iv_alina"/>
+
+            <ImageView
+                android:id="@+id/inbal_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/iv_inbal"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
