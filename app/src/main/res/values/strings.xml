@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BestFitApp</string>
+    <string name="chooseImage">Add Item</string>
 </resources>
