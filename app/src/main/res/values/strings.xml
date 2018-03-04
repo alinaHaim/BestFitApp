@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">BestFitApp</string>
     <string name="chooseImage">Add Item</string>
+    <string name="about_text">what to wear? and how to wear? daily question that we ask ourself every morning.
+BestFit application comes to answer that question.
+This app matches clothes for the user from his private closet.
+
+Developers: Inbal Hermann &amp; Alina Ben Shushan.</string>
+    <string name="load_image">אנא טען תמונה</string>
+    <string name="load_image_error">בעיה בטעינת תמונה</string>
+
 </resources>

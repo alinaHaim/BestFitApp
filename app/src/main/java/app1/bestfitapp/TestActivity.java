@@ -9,15 +9,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-public class TestActivity extends AppCompatActivity {
+import java.io.IOException;
 
-    Button plus2_button;
-    ImageView image_view_cameraTest;
-    //image_view_cameraTest.buildDrawingCache(true);
-    //Bitmap image_bmap = image_view_cameraTest.getDrawingCache();
-    //ImageView image_view_cameraTest;
-    static final int CAM_REQUEST=1;
+public class TestActivity extends AppCompatActivity implements View.OnClickListener {
+
+    Button btn_test_1;
+    ImageView iv_image_1;
+    View v_1_1;
+    View v_1_2;
+    View v_1_3;
+    View v_1_4;
+
+    Button btn_test_2;
+    ImageView iv_image_2;
+    View v_2;
+
+    Uri uri1;
+    Uri uri2;
+
+    static final int CAM_REQUEST = 1;
     Button test_btn;
     ImageView image_view_1;
 
@@ -26,40 +38,40 @@ public class TestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        plus2_button=(Button) findViewById(R.id.plus2_button);
-        image_view_cameraTest=(ImageView)findViewById(R.id.image_view_cameraTest);
-        plus2_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent TakePhoto_intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                getNewImage();
 
-            }
-        });
-        //test_btn=(Button)findViewById(R.id.test_button);
-        //image_view_1=(ImageView)findViewById(R.id.image_view_1);
-        //test_btn.setOnClickListener(new View.OnClickListener() {
-            //@Override
-            //public void onClick(View v) {
-                //Intent CheckPhoto_intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        btn_test_1 = findViewById(R.id.btn_test_1);
+        iv_image_1 = findViewById(R.id.iv_image_1);
+        v_1_1 = findViewById(R.id.v_1_1);
+        v_1_2 = findViewById(R.id.v_1_2);
+        v_1_3 = findViewById(R.id.v_1_3);
+        v_1_4 = findViewById(R.id.v_1_4);
+        btn_test_2 = findViewById(R.id.btn_test_2);
+        iv_image_2 = findViewById(R.id.iv_image_2);
+        v_2 = findViewById(R.id.v_2);
 
-                //setNewImageView();
+        btn_test_1.setOnClickListener(this);
+        iv_image_1.setOnClickListener(this);
+        btn_test_2.setOnClickListener(this);
+        iv_image_2.setOnClickListener(this);
 
-
-            }
-        //});
-
-    //}
+    }
 
 
-
-    public void getNewImage(){
+    public void getNewImage( int test) {
         ImageActivity.show(this, 1, new ImageActivity.ImageUriActivityHandler() {
             @Override
             public void receivedImage(Uri uri) {
-                image_view_cameraTest.setImageURI(uri);
-
-
+                switch (test){
+                    case 1: {
+                        uri1=uri;
+                        break;
+                    }
+                    case 2: {
+                        uri2=uri;
+                        break;
+                    }
+                }
+                updateUi();
             }
 
             @Override
@@ -67,10 +79,67 @@ public class TestActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
-    //public void setNewImageView(){
 
-      //  BitmapManager.setViewBackgroundColor(image_view_1,BitmapManager.getAverageColor(image_bmap));
+    private void updateUi() {
+        iv_image_1.setImageURI(uri1);
+        iv_image_2.setImageURI(uri2);
+    }
 
-    //}
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_test_1: {
+                Bitmap bitmap = getBitmapByUri(uri1);
+                if (bitmap == null) {
+                    return;
+                }
+
+                BitmapManager.setViewsBackgroundColor(new View[]{v_1_1,v_1_2,v_1_3,v_1_4},bitmap);
+                break;
+            }
+            case R.id.iv_image_1: {
+                getNewImage(1);
+                break;
+            }
+            case R.id.btn_test_2: {
+                Bitmap bitmap = getBitmapByUri(uri2);
+                if (bitmap == null) {
+                    return;
+                }
+
+                int color = BitmapManager.getAverageColor(bitmap);
+                v_2.setBackgroundColor(color);
+                break;
+            }
+            case R.id.iv_image_2: {
+                getNewImage(2);
+                break;
+            }
+        }
+    }
+
+    private Bitmap getBitmapByUri(Uri uri) {
+        Bitmap res = null;
+
+        if(uri==null){
+            Toast.makeText(this,getResources().getString(R.string.load_image),Toast.LENGTH_SHORT).show();
+            return null;
+        }
+
+        try {
+            res = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+        }catch (Exception ex){
+            Toast.makeText(this,ex.getMessage(),Toast.LENGTH_LONG).show();
+            return null;
+        }
+
+        if(res == null){
+            Toast.makeText(this,getResources().getString(R.string.load_image_error),Toast.LENGTH_LONG).show();
+        }
+
+        return  res;
+    }
 }

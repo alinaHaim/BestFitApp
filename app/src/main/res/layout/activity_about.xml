@@ -19,11 +19,7 @@
             android:id="@+id/About_Text"
             android:layout_width="350dp"
             android:layout_height="350dp"
-            android:text="what to wear? and how to wear? daily question that we ask ourself every morning.
-BestFit application comes to answer that question.
-This app matches clothes for the user from his private closet.
-
-Developers: Inbal Hermann &amp; Alina Ben Shushan."
+            android:text="@string/about_text"
             android:textSize="25dp"
             tools:layout_editor_absoluteX="61dp"
             tools:layout_editor_absoluteY="27dp"/>
@@ -42,15 +38,13 @@ Developers: Inbal Hermann &amp; Alina Ben Shushan."
                 android:id="@+id/alina_photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@mipmap/iv_alina"/>
+                android:src="@mipmap/iv_alina_foreground"/>
 
             <ImageView
                 android:id="@+id/inbal_photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@mipmap/iv_inbal"/>
+                android:src="@mipmap/iv_inbal_foreground"/>
         </LinearLayout>
 
     </LinearLayout>

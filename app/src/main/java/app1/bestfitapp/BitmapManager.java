@@ -32,7 +32,7 @@ public class BitmapManager {
         int[] G = new int[levels];
         int[] B = new int[levels];
         int[] counter = new int[levels];
-        int levelPart = (255*3) / levels;
+        int levelPart = (256*3) / levels;
 
         int W = bitmap.getWidth();
         int H = bitmap.getHeight();
@@ -45,6 +45,9 @@ public class BitmapManager {
             int  b = Color.blue(pixels[i]);
             int a = r+g+b;
             int levelIndex = a / levelPart;
+            if(levelIndex >= levels){
+                levelIndex = levels-1;
+            }
 
             R[levelIndex] += Color.red(pixels[i]);
             G[levelIndex] += Color.green(pixels[i]);
