@@ -1,6 +1,5 @@
 package app1.bestfitapp;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -11,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.IOException;
+import app1.bestfitapp.managers.BitmapManager;
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener {
 

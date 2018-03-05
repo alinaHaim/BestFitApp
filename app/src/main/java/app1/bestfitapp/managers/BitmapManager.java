@@ -1,4 +1,4 @@
-package app1.bestfitapp;
+package app1.bestfitapp.managers;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;

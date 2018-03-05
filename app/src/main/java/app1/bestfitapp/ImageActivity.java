@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import app1.bestfitapp.managers.ImageManager;
+
 public class ImageActivity extends AppCompatActivity {
     public  interface ImageUriActivityHandler{
         void receivedImage(Uri uri);

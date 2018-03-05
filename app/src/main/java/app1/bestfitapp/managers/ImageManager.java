@@ -1,4 +1,4 @@
-package app1.bestfitapp;
+package app1.bestfitapp.managers;
 
 import android.app.Activity;
 import android.content.ComponentName;
