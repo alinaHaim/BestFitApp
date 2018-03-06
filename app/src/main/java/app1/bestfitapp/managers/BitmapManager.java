@@ -26,6 +26,22 @@ public class BitmapManager {
 
         return Color.rgb(R / pixels.length, G / pixels.length, B / pixels.length);
     }
+    public static int getPrintColor(Bitmap bitmap) {
+        int R = 0, G = 0, B = 0, W, H;
+        W = bitmap.getWidth();
+        H = bitmap.getHeight();
+        int[] pixels = new int[W*H];
+        //int[] pixels = new int[1872*2496];
+        bitmap.getPixels(pixels, 0, W, 0, 0, W, H);
+
+        for (int i = 0; i < pixels.length; i++) {
+            R += Color.red(pixels[i]);
+            G += Color.green(pixels[i]);
+            B += Color.blue(pixels[i]);
+        }
+
+        return Color.rgb(R / pixels.length, G / pixels.length, B / pixels.length);
+    }
 
     public static int[] getAverageColorList(Bitmap bitmap, int levels) {
         int[] R = new int[levels];

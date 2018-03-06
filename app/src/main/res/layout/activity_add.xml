@@ -34,27 +34,32 @@
             android:text="Choose the kind of your item:"
             android:textSize="25dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+
 
             <RadioButton
                 android:id="@+id/shirt_rbtn"
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="shirt"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:checked="true"/>
 
             <RadioButton
                 android:id="@+id/pants_rbtn"
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="pants"
                 android:textSize="20dp"/>
-        </LinearLayout>
+
+
+        </RadioGroup>
 
         <Button
             android:id="@+id/ok_button"
