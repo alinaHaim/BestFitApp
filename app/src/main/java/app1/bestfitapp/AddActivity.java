@@ -109,6 +109,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
             }
         }
     }
+
     private Bitmap getBitmapByUri(Uri uri) {
         Bitmap res = null;
 

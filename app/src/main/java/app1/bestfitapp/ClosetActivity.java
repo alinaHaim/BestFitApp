@@ -1,6 +1,9 @@
 package app1.bestfitapp;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,5 +47,17 @@ ListView     lv_pants;
     public void onClick(View v) {
         Intent intent_add= new Intent(ClosetActivity.this,AddActivity.class);
         startActivity(intent_add);
+    }
+    public static void showDialogdResult_YesNo(Context context, int title, int message, int yesText, int NoText, DialogInterface.OnClickListener yesListener, DialogInterface.OnClickListener noListener) {
+        showDialodResult_YesNo(context,context.getString(title), context.getString( message), context.getString( yesText),context.getString(  NoText),yesListener,noListener);
+    }
+
+    public static void showDialodResult_YesNo(Context context, String title, String message, String yesText, String NoText, DialogInterface.OnClickListener yesListener, DialogInterface.OnClickListener noListener) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+        alertDialog.setTitle(title) ;
+        alertDialog.setMessage("\n" + message + "\n");
+        alertDialog.setPositiveButton(yesText , yesListener);
+        alertDialog.setNegativeButton(NoText , noListener);
+        alertDialog.create().show();
     }
 }

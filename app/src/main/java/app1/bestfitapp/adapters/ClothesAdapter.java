@@ -21,16 +21,17 @@ import app1.bestfitapp.enteties.Clothes;
 public class ClothesAdapter extends ArrayAdapter<Clothe> {
     Activity context;
     public ClothesAdapter(Activity context,Clothes clothes) {
-        super(context, R.layout.clothe_item,clothes);
-       this. context = context;
+        super(context, R.layout.clothe_item, clothes);
+        this.context = context;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
          View v = context.getLayoutInflater().inflate(R.layout.clothe_item, parent, false);
-        Clothe c = getItem(position);
+         Clothe c = getItem(position);
         ((ImageView)v.findViewById(R.id.iv_clothe)).setImageURI(c.uri);
+
          return  v;
     }
 }
