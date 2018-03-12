@@ -13,7 +13,7 @@ import app1.bestfitapp.managers.MMCQorginal;
 public class Clothe {
     public enum e_type{pants,shirt};
 
-    public Uri uri;
-    public MMCQorginal.ColorMap color;
+    public String path;
+    public  ArrayList<ClotheColor> colors;
     public e_type type;
 }

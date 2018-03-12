@@ -8,5 +8,11 @@ This app matches clothes for the user from his private closet.
 Developers: Inbal Hermann &amp; Alina Ben Shushan.</string>
     <string name="load_image">אנא טען תמונה</string>
     <string name="load_image_error">בעיה בטעינת תמונה</string>
+    <string name="delete_clothe_caption">הסרת בגד מהארון</string>
+    <string name="delete_clothe">הבגד ימחק לצמיתות!\n\nהאם אתה בטוח?</string>
+    <string name="yes">כן</string>
+    <string name="no">לא</string>
+    <string name="add_activity_text_1">אנא בחר את צבעי הבגד</string>
+    <string name="add_activity_text_2">לשיפור התוצאה נסה לצלם שנית מזוית שונה</string>
 
 </resources>

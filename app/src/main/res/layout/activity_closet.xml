@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e2e2e2"
     tools:context="app1.bestfitapp.ClosetActivity">
 
     <LinearLayout
@@ -25,21 +26,21 @@
 
             <TextView
                 android:id="@+id/textView_pants"
-                android:layout_width="wrap_content"
+                android:layout_width="24dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Pants"
-                android:textSize="30dp"
-                android:textStyle="bold"
+                android:background="@color/layout_background"
+                android:text="Bottom"
                 android:textColor="@color/colorPrimaryDark"
-                android:background="@color/layout_background"/>/>
+                android:textSize="30dp"
+                android:textStyle="bold"/>/>
 
             <TextView
                 android:id="@+id/textView_shirt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Shirt"
+                android:text="Up"
                 android:textSize="30dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"

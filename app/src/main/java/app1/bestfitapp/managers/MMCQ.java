@@ -3,6 +3,7 @@ package app1.bestfitapp.managers;
 
         import android.graphics.Bitmap;
         import android.graphics.Color;
+        import android.support.annotation.NonNull;
 
         import java.io.IOException;
         import java.util.ArrayList;
@@ -20,8 +21,8 @@ public class MMCQ {
     private static final int GREEN = 1;
     private static final int BLUE = 2;
 
-    public static List<ColorValue> compute(Bitmap image, int maxcolors) throws IOException {
-        List<ColorValue> pixels = getPixels(image);
+    public static List<ColorValue> compute(Bitmap image, int maxcolors,int paddingPercent) throws IOException {
+        List<ColorValue> pixels = getPixels(image,paddingPercent);
         return compute(pixels, maxcolors);
     }
 
@@ -30,17 +31,19 @@ public class MMCQ {
         return map.palette();
     }
 
-    private static List<ColorValue> getPixels(Bitmap image) {
+    private static List<ColorValue> getPixels(Bitmap image,int paddingPercent) {
         int width = image.getWidth();
         int height = image.getHeight();
+        int widthPaddingSide = (width  * paddingPercent)/200;
+        int heightPaddingSide = (height  * paddingPercent)/200;
         List<ColorValue> res = new ArrayList<>();
         List<Integer> t = new ArrayList<>();
-        for (int row = 0; row < height; row+=4) {
-            for (int col = 0; col < width; col+=4) {
+        for (int row = heightPaddingSide  ; row < height - heightPaddingSide; row++) {
+            for (int col = widthPaddingSide ; col < width - widthPaddingSide; col++) {
                 t.add(image.getPixel(col, row));
             }
         }
-        for (int i = 0; i < t.size(); i ++) {
+        for (int i = 0; i < t.size(); i += 10) {
             int argb = t.get(i);
             ColorValue rr = new ColorValue((argb >> 16) & 0xFF,(argb >> 8) & 0xFF,(argb) & 0xFF);
 
@@ -239,6 +242,7 @@ public class MMCQ {
             cmap.push(vBox2);
         }
         cmap.calcPercent();
+        cmap.sort();
         return cmap;
     }
 
@@ -335,9 +339,9 @@ public class MMCQ {
             }
 
             if (ntot > 0) {
-                avg = new ColorValue(~~(redSum / ntot), ~~(greenSum / ntot), ~~(blueSum / ntot));
+                avg = new ColorValue(~(redSum / ntot), ~(greenSum / ntot), ~~(blueSum / ntot));
             } else {
-                avg = new ColorValue(~~(mult * (r1 + r2 + 1) / 2), ~~(mult * (g1 + g2 + 1) / 2), ~~(mult * (b1 + b2 + 1) / 2));
+                avg = new ColorValue(~(mult * (r1 + r2 + 1) / 2), ~(mult * (g1 + g2 + 1) / 2), ~~(mult * (b1 + b2 + 1) / 2));
             }
 
             return avg;
@@ -412,10 +416,10 @@ public class MMCQ {
         @Override
         public int compareTo(Object o) {
             VBox anotherVBox = (VBox) o;
-            return getCount() - anotherVBox.getCount();
+            return getRealCount()-anotherVBox.getRealCount();
         }
 
-        public int getCount(){
+        public int getRealCount(){
             return count(false) * getVolume(false);
         }
     }
@@ -425,7 +429,7 @@ public class MMCQ {
 
         public void push(VBox box) {
             ColorValue cv = box.avg(false);
-            cv.count=box.getCount();
+            cv.count = box.getRealCount();
             vboxes.add(0, cv);
         }
 
@@ -433,34 +437,43 @@ public class MMCQ {
             return vboxes;
         }
 
-        public void calcPercent(){
-            int count = 0;
-            for(ColorValue cv:vboxes){
-                count+=cv.count;
+        public void calcPercent() {
+            float sum = 0;
+            for (ColorValue color : vboxes) {
+                sum += color.count ;
             }
-            count /= 100;
-            for(ColorValue cv:vboxes){
-                cv.percent = cv.count / count;
+            float onePercent = sum / 100;
+            for (ColorValue color : vboxes) {
+                color.percent = (float) color.count / (float)onePercent;
             }
+        }
+
+        public void sort() {
+            Collections.sort(vboxes);
         }
     }
 
-    public static class ColorValue {
-        int r;
-        int g;
-        int b;
-        public int percent;
-        int count;
-
-        public ColorValue(int r,int g,int b){
-            this.r =r;
-            this.g =g;
-            this.b =b;
+    public static class ColorValue implements Comparable<ColorValue>{
+        public ColorValue(int r, int g, int b) {
+            this.r = r;
+            this.g = g;
+            this.b = b;
         }
 
+        int r, g, b, count;
+        float percent;
+
+        public String getPercentToShow() {
+            return String.format("%."+1+"f",percent)+"%";
+        }
+
+        @Override
+        public int compareTo(@NonNull ColorValue o) {
+            return  o.count-count;
+        }
 
         public int getRGB() {
-            return Color.rgb(r,g,b);
+            return Color.rgb(Math.abs(r)  ,Math.abs(g),Math.abs(b));
         }
     }
 

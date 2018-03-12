@@ -7,14 +7,16 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import app1.bestfitapp.adapters.ClothesAdapter;
 import app1.bestfitapp.enteties.Clothe;
 import app1.bestfitapp.managers.DataManager;
+import app1.bestfitapp.managers.Utils;
 
-public class ClosetActivity extends AppCompatActivity implements View.OnClickListener {
-ListView     lv_pants;
+public class ClosetActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
+    ListView lv_pants;
     ListView lv_shirt;
 
     @Override
@@ -26,7 +28,8 @@ ListView     lv_pants;
 
         findViewById(R.id.add_closet_button).setOnClickListener(this);
 
-
+        lv_pants.setOnItemClickListener(this);
+        lv_shirt.setOnItemClickListener(this);
     }
 
     @Override
@@ -45,19 +48,24 @@ ListView     lv_pants;
 
     @Override
     public void onClick(View v) {
-        Intent intent_add= new Intent(ClosetActivity.this,AddActivity.class);
+        Intent intent_add = new Intent(ClosetActivity.this, AddActivity.class);
         startActivity(intent_add);
     }
-    public static void showDialogdResult_YesNo(Context context, int title, int message, int yesText, int NoText, DialogInterface.OnClickListener yesListener, DialogInterface.OnClickListener noListener) {
-        showDialodResult_YesNo(context,context.getString(title), context.getString( message), context.getString( yesText),context.getString(  NoText),yesListener,noListener);
+
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Clothe c = (Clothe) view.getTag();
+        Utils.showDialogdResult_YesNo(this, R.string.delete_clothe_caption, R.string.delete_clothe, R.string.yes, R.string.no, onYesDeleteClick(c), null);
     }
 
-    public static void showDialodResult_YesNo(Context context, String title, String message, String yesText, String NoText, DialogInterface.OnClickListener yesListener, DialogInterface.OnClickListener noListener) {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-        alertDialog.setTitle(title) ;
-        alertDialog.setMessage("\n" + message + "\n");
-        alertDialog.setPositiveButton(yesText , yesListener);
-        alertDialog.setNegativeButton(NoText , noListener);
-        alertDialog.create().show();
+    private DialogInterface.OnClickListener onYesDeleteClick(Clothe c ) {
+        return new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                DataManager.getInstance(getApplicationContext()).deleteClothe(c);
+                updateUI();
+            }
+        };
     }
 }

@@ -29,13 +29,13 @@ public class DataManager {
     SharedPreferences mPreferenceManager;
 
     private DataManager(Context context) {
-        mPreferenceManager = context.getSharedPreferences("aaa",0);
+        mPreferenceManager = context.getSharedPreferences("bbb",0);
        loadClothes();
     }
 
     private void loadClothes() {
         String sc = mPreferenceManager.getString(KEY_CLOTHES,"");
-        if(true || sc.length()==0){
+        if(sc.length()==0){
             clothes = new Clothes() ;
         }else{
             clothes = JsonManager.getObject(sc,Clothes.class);

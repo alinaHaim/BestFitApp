@@ -2,6 +2,7 @@ package app1.bestfitapp.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -30,8 +31,8 @@ public class ClothesAdapter extends ArrayAdapter<Clothe> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
          View v = context.getLayoutInflater().inflate(R.layout.clothe_item, parent, false);
          Clothe c = getItem(position);
-        ((ImageView)v.findViewById(R.id.iv_clothe)).setImageURI(c.uri);
-
+        ((ImageView)v.findViewById(R.id.iv_clothe)).setImageURI(Uri.parse(c.path));
+        v.setTag(c);
          return  v;
     }
 }

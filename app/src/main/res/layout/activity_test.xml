@@ -32,7 +32,10 @@
                     android:layout_alignParentStart="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="82dp"/>
+
+
                 <LinearLayout
+                    android:background="#003344"
                     android:layout_width="match_parent"
                     android:layout_alignParentBottom="true"
                     android:orientation="horizontal"

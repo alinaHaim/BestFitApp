@@ -1,14 +1,17 @@
 package app1.bestfitapp;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -125,18 +128,15 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                // BitmapManager.setViewsBackgroundColor(new View[]{v_1_1,v_1_2,v_1_3,v_1_4},bitmap);
 
                 try {
-                    List<MMCQ.ColorValue> list = MMCQ.compute(bitmap, 5);
+                    List<MMCQ.ColorValue> list = MMCQ.compute(bitmap, 5,20);
                     View[] views = new View[]{v_1_1,v_1_2,v_1_3,v_1_4,v_1_5};
                     for(int i=0;i<views.length;i++){
                          views[i].setBackgroundColor(list.get(i).getRGB());
-                        ((TextView)views[i]).setText(list.get(i).percent+"%");
+                        ((TextView)views[i]).setText(list.get(i).getPercentToShow());
                     }
 
-//                                        List<int[]> list = MMCQorginal.compute(bitmap, 5);
-//                    View[] views = new View[]{v_1_1,v_1_2,v_1_3,v_1_4,v_1_5};
-//                    for(int i=0;i<views.length;i++){
-//                         views[i].setBackgroundColor(Color.rgb(list.get(i)[0],list.get(i)[1],list.get(i)[2]));
-//                    }
+
+
                 }catch (Exception ex){
                     Toast.makeText(this,ex.getMessage(),Toast.LENGTH_LONG).show();
                 }
