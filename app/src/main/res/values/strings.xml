@@ -14,5 +14,10 @@ Developers: Inbal Hermann &amp; Alina Ben Shushan.</string>
     <string name="no">לא</string>
     <string name="add_activity_text_1">אנא בחר את צבעי הבגד</string>
     <string name="add_activity_text_2">לשיפור התוצאה נסה לצלם שנית מזוית שונה</string>
+    <string name="get_color_failed">תקלה בפענוח תמונה</string>
+    <string name="no_color_selected">לא נבחר צבע</string>
+    <string name="add_clothe_successful">הבגד התווסף לארון</string>
+    <string name="permissions_request_storage">כדי להשתמש באפליקציה יש לאשר גישה לקבצים</string>
+    <string name="permissions_request_camera">כדי להשתמש באפליקציה יש לאפשר גישה למצלמה</string>
 
 </resources>

@@ -15,55 +15,77 @@
         tools:layout_editor_absoluteY="0dp"
         tools:ignore="MissingConstraints">
 
-        <Button
-            android:id="@+id/plus_button"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:text="+"/>
-
-        <ImageView
-            android:id="@+id/image_view_camera"
-            android:layout_width="179dp"
-            android:layout_height="163dp"
+        <RelativeLayout
+            android:layout_width="180dp"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            />
+            android:layout_height="180dp">
 
-        <TextView
+            <ImageView
+                android:id="@+id/plus_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:padding="30dp"
+                android:src="@drawable/ic_add_box_black_240dp"/>
+
+
+            <ImageView
+                android:id="@+id/image_view_camera"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </RelativeLayout>
+
+        <LinearLayout android:id="@+id/ll_type"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Choose the kind of your item:"
-            android:textSize="25dp"/>
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
-
-            <RadioButton
-                android:id="@+id/shirt_rbtn"
-                android:layout_width="100dp"
+            android:padding="10dp"
+            android:background="#d6d9ec"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="shirt"
-                android:textSize="20dp"
-                android:checked="true"/>
+                android:text="Choose the kind of your item:"
+                android:textSize="25dp"/>
 
-            <RadioButton
-                android:id="@+id/pants_rbtn"
-                android:layout_width="100dp"
+            <RadioGroup
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="pants"
-                android:textSize="20dp"/>
+                android:orientation="horizontal">
 
 
-        </RadioGroup>
+
+                <RadioButton
+                    android:id="@+id/shirt_rbtn"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="shirt"
+                    android:textSize="20dp"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/pants_rbtn"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="pants"
+                    android:textSize="20dp"/>
+
+
+            </RadioGroup>
+        </LinearLayout>
+
+
 
         <LinearLayout android:id="@+id/ll_colors"
             android:layout_width="match_parent"
-            android:orientation="vertical"
+                      android:layout_margin="10dp"
+                      android:background="#d6d9ec"
+                      android:orientation="vertical"
             android:layout_height="wrap_content">
 
              <TextView android:text="@string/add_activity_text_1"
@@ -75,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
-                android:layout_height="80dp">
+                android:layout_height="60dp">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_weight="1"
@@ -123,6 +145,29 @@
                           android:layout_height="match_parent"/>
                 </RelativeLayout>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView android:id="@+id/tv_level_1"
+                          android:layout_width="match_parent"
+                          android:layout_weight="1"
+                          android:gravity="center"
+                          android:textStyle="bold"
+                          android:layout_height="match_parent"/>
+                <TextView android:id="@+id/tv_level_2"
+                          android:layout_width="match_parent"
+                          android:layout_weight="1"
+                          android:gravity="center"
+                          android:textStyle="bold"
+                          android:layout_height="match_parent"/>
+                <TextView android:id="@+id/tv_level_3"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                         android:gravity="center"
+                          android:textStyle="bold"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
             <TextView android:text="@string/add_activity_text_2"
                       android:layout_width="match_parent"
                       android:gravity="center"
@@ -130,12 +175,19 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+
         <Button
             android:id="@+id/ok_button"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
-
+android:background="@drawable/button_blue"
+            android:layout_margin="10dp"
+            android:textColor="#ffffff"
             android:text="Add"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

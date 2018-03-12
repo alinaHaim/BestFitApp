@@ -13,6 +13,10 @@ import app1.bestfitapp.managers.MMCQorginal;
 public class Clothe {
     public enum e_type{pants,shirt};
 
+    public Clothe(){
+        colors = new ArrayList<>() ;
+    }
+
     public String path;
     public  ArrayList<ClotheColor> colors;
     public e_type type;

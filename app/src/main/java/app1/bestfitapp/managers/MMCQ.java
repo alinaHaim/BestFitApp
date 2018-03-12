@@ -455,12 +455,12 @@ public class MMCQ {
 
     public static class ColorValue implements Comparable<ColorValue>{
         public ColorValue(int r, int g, int b) {
-            this.r = r;
-            this.g = g;
-            this.b = b;
+            this.r = Math.abs(r);
+            this.g = Math.abs(g);
+            this.b = Math.abs(b);
         }
 
-        int r, g, b, count;
+        public int r, g, b, count;
         float percent;
 
         public String getPercentToShow() {
